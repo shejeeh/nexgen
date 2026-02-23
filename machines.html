@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Machines - NexGen Vendors</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">NEXGEN <span class="text-gold">VENDORS</span></a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="machines.html" class="nav-link active">Machines</a></li>
+                <li><a href="investment.html" class="nav-link">Investment</a></li>
+                <li><a href="locations.html" class="nav-link">Locations</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+    <section class="section-padding" style="margin-top: 80px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Premium Fleet</h2>
+                <div class="section-line"></div>
+                <p>Advanced, Reliable, and Smart Vending Models.</p>
+            </div>
+
+            <div class="card-grid">
+                <!-- Snacks Machine -->
+                <div class="glass-card machine-card">
+                    <div
+                        style="height: 250px; background: linear-gradient(45deg, #1e3a8a, #0f172a); display: flex; align-items: center; justify-content: center; color: var(--accent-gold); font-size: 3rem;">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+                    <div class="machine-details">
+                        <h3>Snacks Vending Machine</h3>
+                        <p>High tech snacks vending specifically designed for high-traffic environments.</p>
+                        <ul>
+                            <li><strong>Capacity:</strong> 300-500 Items</li>
+                            <li><strong>Payment:</strong> UPI, Cash, Card</li>
+                            <li><strong>Dimensions:</strong> 1830 x 870 x 830 mm</li>
+                            <li><strong>Power:</strong> Energy Efficient LED Lighting</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Get
+                                Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coffee Machine -->
+                <div class="glass-card machine-card">
+                    <div
+                        style="height: 250px; background: linear-gradient(45deg, #3f2e18, #1a1208); display: flex; align-items: center; justify-content: center; color: var(--accent-gold); font-size: 3rem;">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <div class="machine-details">
+                        <h3>Coffee Vending Machine</h3>
+                        <p>Fully automatic fresh brew coffee machine ideal for corporate offices.</p>
+                        <ul>
+                            <li><strong>Capacity:</strong> 200+ Cups Daily</li>
+                            <li><strong>Menu:</strong> 8+ Drink Selections</li>
+                            <li><strong>Features:</strong> Touch Screen Interface</li>
+                            <li><strong>Maintenance:</strong> Auto-Cleaning Cycle</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Get
+                                Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo Machine -->
+                <div class="glass-card machine-card">
+                    <div
+                        style="height: 250px; background: linear-gradient(45deg, #0f172a, #334155); display: flex; align-items: center; justify-content: center; color: var(--accent-gold); font-size: 3rem;">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div class="machine-details">
+                        <h3>Combo Vending Machine</h3>
+                        <p>The ultimate convenience station offering both cold drinks and snacks.</p>
+                        <ul>
+                            <li><strong>Config:</strong> 6 Trays (Snacks + Drinks)</li>
+                            <li><strong>Cooling:</strong> Dual Zone Temp Control</li>
+                            <li><strong>Technology:</strong> Drop Sensor Detection</li>
+                            <li><strong>Security:</strong> Anti-Vandalism Glass</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Get
+                                Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protein Shake (Coming Soon) -->
+                <div class="glass-card machine-card" style="opacity: 0.7;">
+                    <div
+                        style="height: 250px; background: #000; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 3rem; position: relative;">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span
+                            style="position: absolute; width: 100%; text-align: center; background: rgba(0,0,0,0.8); padding: 10px; font-size: 1.2rem; font-weight: bold; color: white;">COMING
+                            SOON</span>
+                    </div>
+                    <div class="machine-details">
+                        <h3>Protein Shake Machine</h3>
+                        <p>Revolutionary automated nutrition for gyms and fitness centers.</p>
+                        <ul>
+                            <li>Freshly Mixed Shakes</li>
+                            <li>Multiple Flavor Options</li>
+                            <li>Contactless Dispensing</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <button class="btn btn-outline" disabled
+                                style="width: 100%; opacity: 0.5; cursor: not-allowed;">Coming Soon</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="logo">NEXGEN <span class="text-gold">VENDORS</span></h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Providing smart vending solutions and
+                        profitable investment opportunities across Kerala.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="machines.html">Machines</a></li>
+                        <li><a href="investment.html">Investment</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 8921908200</li>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 9526729144</li>
+                        <li><i class="fa-solid fa-envelope text-gold"></i> admin@nexgenvendors.com</li>
+                        <li><i class="fa-solid fa-location-dot text-gold"></i> Breeze Heaven Building, Near SH College,
+                            Thevara, Kochi, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 NexGen Vendors Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NexGen Vendors</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">NEXGEN <span class="text-gold">VENDORS</span></a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="machines.html" class="nav-link">Machines</a></li>
+                <li><a href="investment.html" class="nav-link">Investment</a></li>
+                <li><a href="locations.html" class="nav-link">Locations</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+    <section class="section-padding" style="margin-top: 80px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-line"></div>
+                <p>Have questions about investing or buying machines? Reach out to us.</p>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin-top: 40px;">
+                <!-- Contact Info -->
+                <div>
+                    <div class="glass-card" style="padding: 30px; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 20px;">Contact Information</h3>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="icon-box" style="font-size: 1.2rem; margin-bottom: 0;"><i
+                                    class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p><a href="tel:+918921908200">+91 8921908200</a></p>
+                                <p><a href="tel:+919526729144">+91 9526729144</a></p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="icon-box" style="font-size: 1.2rem; margin-bottom: 0;"><i
+                                    class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/918921908200" target="_blank">+91 8921908200</a></p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div class="icon-box" style="font-size: 1.2rem; margin-bottom: 0;"><i
+                                    class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:admin@nexgenvendors.com">admin@nexgenvendors.com</a></p>
+                                <p><a href="mailto:nexgenvendorspvtltd@gmail.com">nexgenvendorspvtltd@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px;">
+                            <div class="icon-box" style="font-size: 1.2rem; margin-bottom: 0;"><i
+                                    class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4>Headquarters</h4>
+                                <p>Breeze Heaven Building,<br>Near SH College, Thevara,<br>Kochi, Kerala, India</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map Placeholder -->
+                    <div class="glass-card" style="height: 300px; padding: 0; overflow: hidden;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15715.39466395561!2d76.2926!3d9.9312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0870f7bb61c28f%3A0x7d2870428ef5a3c9!2sThevara%2C%20Kochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1684488888888!5m2!1sen!2sin"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card" style="padding: 40px;">
+                    <h3>Send Us a Message</h3>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">We usually respond within 24 hours.</p>
+                    <form action="#" method="POST">
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px;">Full Name</label>
+                            <input type="text" required
+                                style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px;">Phone Number</label>
+                            <input type="tel" required
+                                style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px;">Email Address</label>
+                            <input type="email" required
+                                style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px;">City</label>
+                            <input type="text" required
+                                style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px;">Investment Amount</label>
+                            <select
+                                style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
+                                <option value="1-2L" style="color: black;">₹1 Lakh - ₹3 Lakhs</option>
+                                <option value="3-5L" style="color: black;">₹3 Lakhs - ₹5 Lakhs</option>
+                                <option value="5L+" style="color: black;">₹5 Lakhs+</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px;">Message</label>
+                            <textarea rows="4"
+                                style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="logo">NEXGEN <span class="text-gold">VENDORS</span></h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Providing smart vending solutions and
+                        profitable investment opportunities across Kerala.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="machines.html">Machines</a></li>
+                        <li><a href="investment.html">Investment</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 8921908200</li>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 9526729144</li>
+                        <li><i class="fa-solid fa-envelope text-gold"></i> admin@nexgenvendors.com</li>
+                        <li><i class="fa-solid fa-location-dot text-gold"></i> Breeze Heaven Building, Near SH College,
+                            Thevara, Kochi, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 NexGen Vendors Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

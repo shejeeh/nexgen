@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NexGen Vendors</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">NEXGEN <span class="text-gold">VENDORS</span></a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About Us</a></li>
+                <li><a href="machines.html" class="nav-link">Machines</a></li>
+                <li><a href="investment.html" class="nav-link">Investment</a></li>
+                <li><a href="locations.html" class="nav-link">Locations</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+    <section class="section-padding" style="margin-top: 80px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Who We Are</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="glass-card" style="padding: 40px; margin-bottom: 40px;">
+                <p>NexGen Vendors Pvt Ltd is a leading vending machine supplier and investment solutions provider based
+                    in Kochi, Kerala. We specialize in bringing automated retail convenience to hospitals, colleges, IT
+                    parks, and transit hubs across South India.</p>
+                <br>
+                <p>With a robust network of over 100 installed machines and a decade of operational excellence, we have
+                    mastered the art of passive income generation through smart vending technologies.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="glass-card text-center">
+                    <h3 class="text-gold">4+ Years</h3>
+                    <p>Dedicated Business Experience</p>
+                </div>
+                <div class="glass-card text-center">
+                    <h3 class="text-gold">100+</h3>
+                    <p>Successful Installations</p>
+                </div>
+                <div class="glass-card text-center">
+                    <h3 class="text-gold">#1</h3>
+                    <p>Vendor in Kerala</p>
+                </div>
+            </div>
+
+            <div class="glass-card" style="margin-top: 40px; padding: 30px;">
+                <h3 class="text-center" style="margin-bottom: 20px;">Our Mission & Vision</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h4 class="text-gold">Mission</h4>
+                        <p>To provide smart, reliable, and profitable vending solutions that empower investors and serve
+                            communities with 24/7 convenience.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-gold">Vision</h4>
+                        <p>To become South India’s leading automated retail provider, setting the benchmark for quality,
+                            transparency, and innovation in the vending industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="logo">NEXGEN <span class="text-gold">VENDORS</span></h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Providing smart vending solutions and
+                        profitable investment opportunities across Kerala.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="machines.html">Machines</a></li>
+                        <li><a href="investment.html">Investment</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 8921908200</li>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 9526729144</li>
+                        <li><i class="fa-solid fa-envelope text-gold"></i> admin@nexgenvendors.com</li>
+                        <li><i class="fa-solid fa-location-dot text-gold"></i> Breeze Heaven Building, Near SH College,
+                            Thevara, Kochi, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 NexGen Vendors Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
