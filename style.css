@@ -33,12 +33,7 @@ html {
 }
 
 body {
-    background-color: #0f5f63;
-    background-image: linear-gradient(160deg, #0f5f63 0%, #1c7c71 50%, #3dbb9a 100%);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--primary-dark);
     color: var(--text-main);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -928,5 +923,314 @@ ul {
 
     .machine-desc {
         min-height: auto;
+    }
+}
+
+/* Investment Hero Split Layout */
+.investment-hero-split {
+    padding: 140px 0 80px 0;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-dark);
+}
+
+.investment-hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.investment-hero-content {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+    z-index: 2;
+}
+
+.investment-hero-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.investment-hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.investment-hero-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.investment-hero-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.investment-visual-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/5;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Premium glass edge */
+}
+
+/* Dark teal overlay mixed with shadow */
+.investment-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 148, 136, 0.2);
+    /* Subtle teal / #0d9488 */
+    mix-blend-mode: overlay;
+    z-index: 2;
+}
+
+.investment-visual-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--primary-dark) 2%, transparent 40%),
+        linear-gradient(to top, var(--primary-dark) 2%, transparent 30%);
+    z-index: 3;
+}
+
+.investment-visual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: contrast(1.1) brightness(0.9);
+    padding: 30px;
+    transform: scale(1.05);
+}
+
+.btn-outline-gold {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.btn-outline-gold:hover {
+    background: rgba(198, 167, 94, 0.1);
+    color: var(--accent-gold);
+}
+
+@media (max-width: 992px) {
+    .investment-hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .investment-hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .investment-hero-actions {
+        justify-content: center;
+    }
+
+    .investment-hero-visual {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .investment-hero-title {
+        font-size: 2.8rem;
+    }
+
+    .investment-visual-img {
+        padding: 20px;
+    }
+}
+
+/* Franchise Hero Text Layout */
+.franchise-hero-split {
+    padding: 140px 0 80px 0;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-dark);
+}
+
+.franchise-hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.franchise-hero-content {
+    flex: 0 0 45%;
+    text-align: left;
+    z-index: 2;
+}
+
+.franchise-hero-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.text-gold-bright {
+    color: #fce76b;
+    /* Brighter gold for franchise emphasis */
+}
+
+.franchise-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.franchise-hero-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.franchise-hero-visual {
+    flex: 0 0 50%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Framework Blocks Grid */
+.franchise-framework-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.framework-card {
+    background: rgba(15, 23, 42, 0.6);
+    border-left: 3px solid var(--accent-gold);
+    border-radius: 8px;
+    padding: 25px 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+/* Fade up animation for cards */
+.framework-card:nth-child(1) {
+    animation: fadeUpCard 0.6s ease forwards 0.2s;
+}
+
+.framework-card:nth-child(2) {
+    animation: fadeUpCard 0.6s ease forwards 0.4s;
+}
+
+.framework-card:nth-child(3) {
+    animation: fadeUpCard 0.6s ease forwards 0.6s;
+}
+
+@keyframes fadeUpCard {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.framework-card:hover {
+    background: rgba(30, 41, 59, 0.8);
+    transform: translateX(5px) !important;
+}
+
+.framework-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.framework-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+}
+
+.framework-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.framework-list li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.framework-list li::before {
+    content: "•";
+    color: var(--accent-gold);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+}
+
+.framework-list li:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+    .franchise-hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .franchise-hero-content {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .franchise-hero-visual {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .franchise-hero-actions {
+        justify-content: center;
+    }
+
+    .franchise-hero-title {
+        font-size: 2.8rem;
+    }
+
+    .framework-card {
+        padding: 20px;
+        text-align: left;
     }
 }
