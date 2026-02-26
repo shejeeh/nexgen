@@ -111,30 +111,30 @@
                 <div class="glass-card" style="padding: 40px;">
                     <h3>Send Us a Message</h3>
                     <p style="margin-bottom: 30px; color: var(--text-muted);">We usually respond within 24 hours.</p>
-                    <form action="#" method="POST">
+                    <form id="whatsappContactForm">
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Full Name</label>
-                            <input type="text" required
+                            <input type="text" id="waName" required
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Phone Number</label>
-                            <input type="tel" required
+                            <input type="tel" id="waPhone" required
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Email Address</label>
-                            <input type="email" required
+                            <input type="email" id="waEmail" required
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">City</label>
-                            <input type="text" required
+                            <input type="text" id="waCity" required
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Investment Amount</label>
-                            <select
+                            <select id="waInvestment" required
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
                                 <option value="1-2L" style="color: black;">₹1 Lakh - ₹3 Lakhs</option>
                                 <option value="3-5L" style="color: black;">₹3 Lakhs - ₹5 Lakhs</option>
@@ -143,11 +143,43 @@
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Message</label>
-                            <textarea rows="4"
+                            <textarea id="waMessage" rows="4"
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                     </form>
+
+                    <script>
+                        document.getElementById('whatsappContactForm').addEventListener('submit', function (e) {
+                            e.preventDefault(); // Prevent standard form submission
+
+                            // Retrieve user inputs
+                            const name = document.getElementById('waName').value;
+                            const phone = document.getElementById('waPhone').value;
+                            const email = document.getElementById('waEmail').value;
+                            const city = document.getElementById('waCity').value;
+                            const investment = document.getElementById('waInvestment').value;
+                            const msg = document.getElementById('waMessage').value;
+
+                            // Insert the actual business WhatsApp number here later
+                            const waNumber = ''; // Make sure it includes the country code (e.g., '91' for India) but NO '+' or spaces.
+
+                            // Format message text
+                            const textMessage = `Hello Nexgen Team,%0A%0A`
+                                + `New Contact Form Submission:%0A`
+                                + `- *Name:* ${name}%0A`
+                                + `- *Phone:* ${phone}%0A`
+                                + `- *Email:* ${email}%0A`
+                                + `- *City:* ${city}%0A`
+                                + `- *Investment:* ${investment}%0A`
+                                + `- *Message:* ${msg !== '' ? msg : 'No additional message.'}%0A%0A`
+                                + `Please get back to me.`;
+
+                            // Trigger redirect
+                            const whatsappURL = `https://wa.me/${waNumber}?text=${textMessage}`;
+                            window.open(whatsappURL, '_blank');
+                        });
+                    </script>
                 </div>
             </div>
         </div>
