@@ -43,25 +43,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-center">
-                    <span class="hero-badge">SMART VENDING . SMARTER INVESTMENTS</span>
-                    <h1 class="hero-title">Start Your Passive Income with<br><span class="text-gold">Smart Vending
-                            Machines</span></h1>
-                    <p class="hero-subtitle">India's trusted vending machine supplier & investment partner. Earn 30%-40%
-                        annual returns with our fully managed solutions in Kerala.</p>
+    <!-- Hero Section - Scroll Animation Wrapper -->
+    <div id="hero-scroll-wrapper" class="hero-scroll-wrapper">
+        <section class="hero" id="hero-sticky">
+            <!-- Frame Animation Canvas -->
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <!-- Dark overlay to maintain text legibility -->
+            <div class="hero-canvas-overlay"></div>
 
-                    <div class="hero-btns" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                        <a href="investment.html" class="btn btn-primary premium-glow-btn">Become an Investor</a>
-                        <a href="franchise.html" class="btn btn-primary premium-glow-btn">Apply for Franchise</a>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-center">
+                        <span class="hero-badge">SMART VENDING . SMARTER INVESTMENTS</span>
+                        <h1 class="hero-title">Start Your Passive Income with<br><span class="text-gold">Smart Vending
+                                Machines</span></h1>
+                        <p class="hero-subtitle">India's trusted vending machine supplier &amp; investment partner. Earn 30%-40%
+                            annual returns with our fully managed solutions in Kerala.</p>
+
+                        <div class="hero-btns" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                            <a href="investment.html" class="btn btn-primary premium-glow-btn">Become an Investor</a>
+                            <a href="franchise.html" class="btn btn-primary premium-glow-btn">Apply for Franchise</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
 
 
@@ -417,7 +424,150 @@
             navMenu.classList.remove('active');
         }));
 
+        // ──────────────────────────────────────────────────────────────────────
+        // HERO SCROLL-BASED FRAME ANIMATION
+        // ──────────────────────────────────────────────────────────────────────
+        (function () {
+            const TOTAL_FRAMES = 240;
+            const FRAME_PREFIX = 'ezgif-frame-';
+            const FRAME_EXT = '.jpg';
 
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            const wrapper = document.getElementById('hero-scroll-wrapper');
+
+            // Build sorted array of frame paths: ezgif-frame-001.jpg … 240.jpg
+            const framePaths = [];
+            for (let i = 1; i <= TOTAL_FRAMES; i++) {
+                const num = String(i).padStart(3, '0');
+                framePaths.push(FRAME_PREFIX + num + FRAME_EXT);
+            }
+
+            // ── Resize canvas to match hero viewport ──
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                drawFrame(currentFrame);
+            }
+
+            // ── Image cache ──
+            const images = new Array(TOTAL_FRAMES).fill(null);
+            let loadedCount = 0;
+            let currentFrame = 0;
+            let rafId = null;
+            let pendingFrame = 0;
+
+            // Pre-load first frame immediately so the canvas has content fast
+            function loadFrame(index, cb) {
+                if (images[index]) { cb && cb(); return; }
+                const img = new Image();
+                img.onload = () => { images[index] = img; loadedCount++; cb && cb(); };
+                img.onerror = () => { loadedCount++; cb && cb(); }; // skip broken frames
+                img.src = framePaths[index];
+            }
+
+            // Draw a specific frame index onto the canvas (cover-fit)
+            function drawFrame(index) {
+                const img = images[index];
+                if (!img || !canvas.width || !canvas.height) return;
+
+                const cw = canvas.width;
+                const ch = canvas.height;
+                const iw = img.naturalWidth;
+                const ih = img.naturalHeight;
+
+                // Object-fit: cover
+                const scale = Math.max(cw / iw, ch / ih);
+                const dx = (cw - iw * scale) / 2;
+                const dy = (ch - ih * scale) / 2;
+
+                ctx.clearRect(0, 0, cw, ch);
+                ctx.drawImage(img, dx, dy, iw * scale, ih * scale);
+            }
+
+            // ── rAF loop: only redraws when pending != current ──
+            function loop() {
+                if (pendingFrame !== currentFrame) {
+                    currentFrame = pendingFrame;
+                    if (images[currentFrame]) {
+                        drawFrame(currentFrame);
+                    } else {
+                        // Frame not yet loaded – load it now and draw when ready
+                        loadFrame(currentFrame, () => drawFrame(currentFrame));
+                    }
+                }
+                rafId = requestAnimationFrame(loop);
+            }
+
+            // ── Scroll handler: maps scroll progress → frame index ──
+            function onScroll() {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const totalScroll = wrapper.offsetHeight - window.innerHeight;
+                const scrolled = Math.max(0, -wrapperRect.top);
+                const progress = Math.min(1, scrolled / totalScroll);
+                pendingFrame = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES));
+
+                // Reveal content at ~75% animation completion and hide if scrolled back up
+                const heroCenter = document.querySelector('.hero-center');
+                if (pendingFrame >= TOTAL_FRAMES * 0.75 || progress >= 0.75) {
+                    heroCenter.classList.add('visible');
+                } else {
+                    heroCenter.classList.remove('visible');
+                }
+
+                // Smoothly crossfade canvas and background at ~90%
+                const heroOverlay = document.querySelector('.hero-canvas-overlay');
+                const heroCanvas = document.querySelector('.hero-canvas');
+                if (pendingFrame >= TOTAL_FRAMES * 0.90 || progress >= 0.90) {
+                    heroOverlay.classList.add('bg-blend');
+                    heroCanvas.classList.add('fade-out');
+                } else {
+                    heroOverlay.classList.remove('bg-blend');
+                    heroCanvas.classList.remove('fade-out');
+                }
+            }
+
+            // ── Progressive background loading ──
+            // Load in small batches so first frames arrive fast
+            function loadBatch(start, end, delay) {
+                setTimeout(() => {
+                    for (let i = start; i < end && i < TOTAL_FRAMES; i++) {
+                        loadFrame(i);
+                    }
+                }, delay);
+            }
+
+            // ── Init ──
+            function init() {
+                // Size canvas
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+
+                // Load first frame synchronously to avoid blank canvas flash
+                loadFrame(0, () => drawFrame(0));
+
+                // Load next 20 frames immediately, rest progressively
+                loadBatch(1, 20, 0);
+                loadBatch(20, 60, 200);
+                loadBatch(60, 120, 500);
+                loadBatch(120, 240, 900);
+
+                window.addEventListener('scroll', onScroll, { passive: true });
+                window.addEventListener('resize', resizeCanvas, { passive: true });
+
+                // Initialize state based on current scroll position
+                onScroll();
+
+                rafId = requestAnimationFrame(loop);
+            }
+
+            // Wait for DOM paint
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
     </script>
 </body>
 

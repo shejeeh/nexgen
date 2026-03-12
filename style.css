@@ -170,21 +170,55 @@ ul {
     transition: all 0.3s ease-in-out;
 }
 
+/* ── Hero Scroll Animation Wrapper ── */
+.hero-scroll-wrapper {
+    /* Tall scroll container – scrolling through it plays the frames */
+    height: 600vh;
+    position: relative;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: sticky;
+    top: 0;
     padding-top: 80px;
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-        /* Dark overlay */
-        url('images/Whisk_261dd979b898c839d32472acd4b6a88ddr.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* Canvas replaces the static background; keep bg-color as fallback */
+    background-color: #0f5f63;
+    overflow: hidden;
+}
+
+/* Canvas fills the hero viewport behind all content */
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.hero-canvas.fade-out {
+    opacity: 0;
+}
+
+/* Background fade overlay */
+.hero-canvas-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--primary-dark);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.8s ease-out;
+}
+
+.hero-canvas-overlay.bg-blend {
+    opacity: 1;
 }
 
 .hero-content {
@@ -193,6 +227,7 @@ ul {
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
     z-index: 2;
     padding: 0;
 }
@@ -201,10 +236,22 @@ ul {
     width: 100%;
     max-width: 850px;
     text-align: center;
-    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    /* Hide animation (reverse scroll): 0.5s duration, ease-in */
+    transition: opacity 0.5s ease-in, transform 0.5s ease-in;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.hero-center.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    /* Reveal animation (scroll down): 0.6s duration, ease-out */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 
