@@ -210,13 +210,7 @@ ul {
 .hero-canvas-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(0,0,0,0.55),
-        rgba(0,0,0,0.35),
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0)
-    );
+    background: rgba(0,0,0,0.28);
     opacity: 0;
     z-index: 1;
     pointer-events: none;
@@ -280,21 +274,21 @@ ul {
     text-align: center;
     opacity: 0;
     /* Hidden before */
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+    transform: translateY(15px);
+    transition: opacity 0.35s ease-in, transform 0.35s ease-in;
 }
 
 .step-text.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
 }
 
 .step-text.hidden-after {
     opacity: 0;
     /* Hidden after */
     transform: translateY(-10px);
-    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+    transition: opacity 0.35s ease-in, transform 0.35s ease-in;
 }
 
 @keyframes fade-in-up {

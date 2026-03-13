@@ -520,9 +520,9 @@
 
                 // Step Texts Handler
                 const stepTexts = [
-                    { element: document.getElementById('step-text-1'), start: 0.20, end: 0.35 },
-                    { element: document.getElementById('step-text-2'), start: 0.40, end: 0.55 },
-                    { element: document.getElementById('step-text-3'), start: 0.60, end: 0.70 }
+                    { element: document.getElementById('step-text-1'), start: 0.12, end: 0.25 },
+                    { element: document.getElementById('step-text-2'), start: 0.40, end: 0.50 },
+                    { element: document.getElementById('step-text-3'), start: 0.55, end: 0.63 }
                 ];
 
                 stepTexts.forEach(step => {
@@ -538,12 +538,12 @@
                     }
                 });
 
-                // Reveal content and crossfade background at ~75% animation completion
+                // Reveal content and crossfade background at ~68% animation completion
                 const heroCenter = document.querySelector('.hero-center');
                 const heroOverlay = document.querySelector('.hero-canvas-overlay');
                 const heroCanvas = document.querySelector('.hero-canvas');
 
-                if (pendingFrame >= TOTAL_FRAMES * 0.75 || progress >= 0.75) {
+                if (pendingFrame >= TOTAL_FRAMES * 0.68 || progress >= 0.68) {
                     heroCenter.classList.add('visible');
                     heroOverlay.classList.add('bg-blend');
                     heroCanvas.classList.add('fade-out');
