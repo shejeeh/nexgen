@@ -53,6 +53,17 @@
 
             <div class="container">
                 <div class="hero-content">
+                    <div class="step-texts-container">
+                        <div class="step-text" id="step-text-1">
+                            <h2 class="hero-title" style="font-size: 3.2rem; margin-bottom: 0;">Premium Design.<br><span class="text-gold">Striking Presence.</span></h2>
+                        </div>
+                        <div class="step-text" id="step-text-2">
+                            <h2 class="hero-title" style="font-size: 3.2rem; margin-bottom: 0;">Intelligent Delivery.<br><span class="text-gold">Guaranteed.</span></h2>
+                        </div>
+                        <div class="step-text" id="step-text-3">
+                            <h2 class="hero-title" style="font-size: 3.2rem; margin-bottom: 0;">Track Performance.<br><span class="text-gold">Anywhere, Anytime.</span></h2>
+                        </div>
+                    </div>
                     <div class="hero-center">
                         <span class="hero-badge">SMART VENDING . SMARTER INVESTMENTS</span>
                         <h1 class="hero-title">Start Your Passive Income with<br><span class="text-gold">Smart Vending
@@ -507,21 +518,37 @@
                 const progress = Math.min(1, scrolled / totalScroll);
                 pendingFrame = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES));
 
-                // Reveal content at ~75% animation completion and hide if scrolled back up
-                const heroCenter = document.querySelector('.hero-center');
-                if (pendingFrame >= TOTAL_FRAMES * 0.75 || progress >= 0.75) {
-                    heroCenter.classList.add('visible');
-                } else {
-                    heroCenter.classList.remove('visible');
-                }
+                // Step Texts Handler
+                const stepTexts = [
+                    { element: document.getElementById('step-text-1'), start: 0.20, end: 0.35 },
+                    { element: document.getElementById('step-text-2'), start: 0.40, end: 0.55 },
+                    { element: document.getElementById('step-text-3'), start: 0.60, end: 0.70 }
+                ];
 
-                // Smoothly crossfade canvas and background at ~90%
+                stepTexts.forEach(step => {
+                    if (!step.element) return;
+                    if (progress < step.start) {
+                        step.element.classList.remove('visible', 'hidden-after');
+                    } else if (progress >= step.start && progress <= step.end) {
+                        step.element.classList.add('visible');
+                        step.element.classList.remove('hidden-after');
+                    } else if (progress > step.end) {
+                        step.element.classList.remove('visible');
+                        step.element.classList.add('hidden-after');
+                    }
+                });
+
+                // Reveal content and crossfade background at ~75% animation completion
+                const heroCenter = document.querySelector('.hero-center');
                 const heroOverlay = document.querySelector('.hero-canvas-overlay');
                 const heroCanvas = document.querySelector('.hero-canvas');
-                if (pendingFrame >= TOTAL_FRAMES * 0.90 || progress >= 0.90) {
+
+                if (pendingFrame >= TOTAL_FRAMES * 0.75 || progress >= 0.75) {
+                    heroCenter.classList.add('visible');
                     heroOverlay.classList.add('bg-blend');
                     heroCanvas.classList.add('fade-out');
                 } else {
+                    heroCenter.classList.remove('visible');
                     heroOverlay.classList.remove('bg-blend');
                     heroCanvas.classList.remove('fade-out');
                 }
