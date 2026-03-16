@@ -183,11 +183,9 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: sticky;
-    top: 0;
+    position: relative;
     padding-top: 80px;
-    /* Canvas replaces the static background; keep bg-color as fallback */
-    background-color: #0f5f63;
+    background-color: var(--primary-dark);
     overflow: hidden;
 }
 
@@ -263,32 +261,34 @@ ul {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-right: 10%;
     pointer-events: none;
     z-index: 10;
 }
 
 .step-text {
     position: absolute;
-    width: 100%;
-    text-align: center;
+    width: auto;
+    max-width: 45%;
+    text-align: right;
     opacity: 0;
     /* Hidden before */
-    transform: translateY(15px);
-    transition: opacity 0.35s ease-in, transform 0.35s ease-in;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
 .step-text.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .step-text.hidden-after {
     opacity: 0;
     /* Hidden after */
     transform: translateY(-10px);
-    transition: opacity 0.35s ease-in, transform 0.35s ease-in;
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
 @keyframes fade-in-up {
