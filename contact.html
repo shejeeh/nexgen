@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - NexGen Vendors</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/new_logo-removebg.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="images/new_logo-removebg.png">
+    <link rel="shortcut icon" href="images/new_logo-removebg.png">
+    <link rel="apple-touch-icon" href="images/new_logo-removebg.png">
+    <meta name="description"
+        content="Invest in smart vending machines with NexGen Vendors. Fully managed FOCO model with automated operations and scalable income opportunities.">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,8 +60,7 @@
                 <p>Have questions about investing or buying machines? Reach out to us.</p>
             </div>
 
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin-top: 40px;">
+            <div class="contact-grid">
                 <!-- Contact Info -->
                 <div>
                     <div class="glass-card" style="padding: 30px; margin-bottom: 20px;">
@@ -134,12 +140,8 @@
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Investment Amount</label>
-                            <select id="waInvestment" required
+                            <input type="text" id="waInvestment" required placeholder="e.g. ₹2 Lakhs"
                                 style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px;">
-                                <option value="1-2L" style="color: black;">₹1 Lakh - ₹3 Lakhs</option>
-                                <option value="3-5L" style="color: black;">₹3 Lakhs - ₹5 Lakhs</option>
-                                <option value="5L+" style="color: black;">₹5 Lakhs+</option>
-                            </select>
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px;">Message</label>
@@ -162,7 +164,7 @@
                             const msg = document.getElementById('waMessage').value;
 
                             // Insert the actual business WhatsApp number here later
-                            const waNumber = ''; // Make sure it includes the country code (e.g., '91' for India) but NO '+' or spaces.
+                            const waNumber = '918921908200'; // India country code 91 + number, no '+' or spaces.
 
                             // Format message text
                             const textMessage = `Hello Nexgen Team,%0A%0A`

@@ -994,11 +994,20 @@ ul {
     }
 }
 
+.tech-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
 @media (max-width: 768px) {
 
     .premium-machine-grid,
-    .premium-invest-grid {
+    .premium-invest-grid,
+    .tech-grid {
         grid-template-columns: 1fr;
+    }
+
+    .tech-image-placeholder {
+        display: none !important;
     }
 
     .franchise-grid {
@@ -1390,5 +1399,38 @@ ul {
     .footer-col:nth-child(3) ul li:nth-last-child(2) i,
     .footer-col:nth-child(3) ul li:nth-last-child(1) i {
         margin-top: 0; /* Center icons for inline */
+    }
+}
+
+/* ── Contact Page Grid ── */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    /* Make sure the form and info cards don't overflow */
+    .contact-grid .glass-card {
+        padding: 20px !important;
+    }
+
+    /* Inputs and textareas fill properly without overflow */
+    .contact-grid input,
+    .contact-grid select,
+    .contact-grid textarea {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    /* Map iframe adjusts height nicely on mobile */
+    .contact-grid iframe {
+        height: 220px;
     }
 }
