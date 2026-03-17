@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-snap-type: y mandatory; scroll-behavior: smooth;">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,62 +24,57 @@
             padding: 0;
         }
 
-        .horizontal-wrapper {
-            height: 600vh;
-            position: relative;
-        }
-
-        .snap-anchor {
-            position: absolute;
+        .foco-wrapper {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            height: 100vh;
-            scroll-snap-align: start;
-            pointer-events: none;
-        }
-
-        .sticky-container {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .horizontal-slider {
-            display: flex;
-            width: 600vw;
-            /* 6 full screen panels */
-            height: 100%;
-            will-change: transform;
         }
 
         .foco-panel {
-            flex: 0 0 100vw;
-            height: 100vh;
+            width: 100%;
             display: flex;
             box-sizing: border-box;
-            padding-top: 80px;
-            /* Offset to clear the fixed navbar */
+            padding: 100px 0;
+            align-items: center;
         }
 
-        /* 40-45% Left Text Content */
+        /* Alternate Background Color matching rest of the site */
+        .foco-panel:nth-child(even) {
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        /* Ensure first panel neatly clears the fixed navbar */
+        .foco-panel:first-child {
+            padding-top: 140px;
+        }
+
         .foco-left {
-            flex: 0 0 42%;
+            flex: 0 0 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 5% 0 8%;
+            padding: 0 5%;
         }
 
-        /* 55-60% Right Image Placeholder */
         .foco-right {
-            flex: 0 0 58%;
+            flex: 0 0 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 5% 40px 0;
+            padding: 0 5%;
+        }
+
+        .foco-panel .foco-right img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .foco-reverse {
+            flex-direction: row-reverse;
         }
 
         .foco-subtitle {
@@ -172,21 +167,21 @@
             border-radius: 50%;
         }
 
-        .footer {
-            scroll-snap-align: end;
-        }
-
         @media (max-width: 992px) {
             .foco-panel {
-                flex-direction: column;
-                padding-top: 100px;
+                flex-direction: column !important;
+                padding: 60px 0 !important;
+            }
+            
+            .foco-panel:first-child {
+                padding-top: 120px !important;
             }
 
             .foco-left,
             .foco-right {
-                flex: 0 0 50%;
-                width: 100%;
-                padding: 20px;
+                flex: none !important;
+                width: 100% !important;
+                padding: 20px 5% !important;
             }
 
             .foco-title {
@@ -211,27 +206,14 @@
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="machines.html" class="nav-link">Machines</a></li>
                 <li><a href="investment.html" class="nav-link">Investment</a></li>
-                <li><a href="franchise.html" class="nav-link">Franchise</a></li>
                 <li><a href="foco.html" class="nav-link active">FOCO Model</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Fullscreen Horizontal Scroll Strategy -->
-    <div class="horizontal-wrapper" id="foco-wrapper">
-
-        <!-- Native Snapping Points for vertical precision -->
-        <div class="snap-anchor" style="top: 0;"></div>
-        <div class="snap-anchor" style="top: 100vh;"></div>
-        <div class="snap-anchor" style="top: 200vh;"></div>
-        <div class="snap-anchor" style="top: 300vh;"></div>
-        <div class="snap-anchor" style="top: 400vh;"></div>
-        <div class="snap-anchor" style="top: 500vh;"></div>
-
-        <!-- Sticky viewport translating bounds -->
-        <div class="sticky-container">
-            <div class="horizontal-slider" id="foco-slider">
+    <!-- Vertical Scroll Strategy -->
+    <div class="foco-wrapper" id="foco-wrapper">
 
                 <!-- Panel 1: Introduction -->
                 <section class="foco-panel">
@@ -240,16 +222,15 @@
                         <h1 class="foco-title">FOCO Model</h1>
                         <p class="foco-desc">The FOCO model allows investors to own the vending machine asset while
                             NexGen Vendors manages the complete operations.</p>
-                        <p class="foco-desc">This structure combines asset ownership with professionally managed
-                            operations.</p>
+                        <p class="foco-desc">This structure combines asset ownership with professionally managed operations.</p>
                     </div>
                     <div class="foco-right">
-                        <img src="images/ChatGPT Image Mar 16, 2026, 03_38_28 PM.png" alt="FOCO Model" style="width: 100%; height: 75%; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                        <img src="images/ChatGPT Image Mar 16, 2026, 03_38_28 PM.png" alt="FOCO Model">
                     </div>
                 </section>
 
                 <!-- Panel 2: Location -->
-                <section class="foco-panel">
+                <section class="foco-panel foco-reverse">
                     <div class="foco-left">
                         <div class="foco-subtitle">Step 01</div>
                         <h2 class="foco-title">Location Identification</h2>
@@ -257,7 +238,7 @@
                             and offices for vending machine placement.</p>
                     </div>
                     <div class="foco-right">
-                        <img src="images/Gemini_Generated_Image_6aior26aior26aio.png" alt="Location Identification" style="width: 100%; height: 75%; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                        <img src="images/Gemini_Generated_Image_6aior26aior26aio.png" alt="Location Identification">
                     </div>
                 </section>
 
@@ -269,19 +250,19 @@
                         <p class="foco-desc">NexGen provides high-quality vending machines along with complete service, maintenance, and technical support.</p>
                     </div>
                     <div class="foco-right">
-                        <img src="images/Snapins.ai_485148618_1067297265442881_3019929333685205287_n_1080.jpg.jpeg" alt="Machine Deployment" style="width: 100%; height: 75%; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                        <img src="images/Snapins.ai_485148618_1067297265442881_3019929333685205287_n_1080.jpg.jpeg" alt="Machine Deployment">
                     </div>
                 </section>
 
                 <!-- Panel 4: Warehouse Management -->
-                <section class="foco-panel">
+                <section class="foco-panel foco-reverse">
                     <div class="foco-left">
                         <div class="foco-subtitle">Step 03</div>
                         <h2 class="foco-title">Warehouse Management</h2>
                         <p class="foco-desc">NexGen manages product storage and inventory through its warehouse system to ensure a consistent supply for vending machines.</p>
                     </div>
                     <div class="foco-right">
-                        <img src="images/Gemini_Generated_Image_141jxx141jxx141j.png" alt="Warehouse Management" style="width: 100%; height: 75%; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                        <img src="images/Gemini_Generated_Image_141jxx141jxx141j.png" alt="Warehouse Management">
                     </div>
                 </section>
 
@@ -293,27 +274,58 @@
                         <p class="foco-desc">NexGen manages the transportation of products from the warehouse to vending machine locations.</p>
                     </div>
                     <div class="foco-right">
-                        <img src="images/Gemini_Generated_Image_k6x8y2k6x8y2k6x8.png" alt="Logistics & Transportation" style="width: 100%; height: 75%; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                        <img src="images/Gemini_Generated_Image_k6x8y2k6x8y2k6x8.png" alt="Logistics & Transportation">
                     </div>
                 </section>
 
                 <!-- Panel 6: Machine Refill -->
-                <section class="foco-panel">
+                <section class="foco-panel foco-reverse">
                     <div class="foco-left">
                         <div class="foco-subtitle">Step 05</div>
                         <h2 class="foco-title">Machine Refill</h2>
                         <p class="foco-desc">NexGen regularly refills the vending machines to ensure products are always available for customers.</p>
                     </div>
                     <div class="foco-right">
-                        <img src="images/Whisk_4b66c04da8064e9ad234eee184c65a5bdr.jpeg" alt="Machine Refill" style="width: 100%; height: 75%; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                        <img src="images/Whisk_4b66c04da8064e9ad234eee184c65a5bdr.jpeg" alt="Machine Refill">
                     </div>
                 </section>
 
-            </div>
-        </div>
     </div>
 
-
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="logo">NEXGEN <span class="text-gold">VENDORS</span></h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Providing smart vending solutions and
+                        profitable investment opportunities across Kerala.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="machines.html">Machines</a></li>
+                        <li><a href="investment.html">Investment</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 8921908200</li>
+                        <li><i class="fa-solid fa-phone text-gold"></i> +91 9526729144</li>
+                        <li><i class="fa-solid fa-envelope text-gold"></i> admin@nexgenvendors.com</li>
+                        <li><i class="fa-solid fa-location-dot text-gold"></i> Breeze Heaven Building, Near SH College,
+                            Thevara, Kochi, Kerala</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 NexGen Vendors Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <a href="https://wa.me/918921908200" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
@@ -335,92 +347,6 @@
             navigationMenu.classList.remove('active');
         }));
 
-        // Vanilla JavaScript Horizontal Scroll Intercept
-        const scrollWrapper = document.getElementById('foco-wrapper');
-        const scrollSlider = document.getElementById('foco-slider');
-
-        function mapVerticalToHorizontal() {
-            const wrapperRect = scrollWrapper.getBoundingClientRect();
-
-            // Validate distance scrolled negatively away from 0 threshold relative to the wrapper
-            const scrolledAmount = Math.max(0, -wrapperRect.top);
-
-            // Maximum vertically scrollable distance inside wrapper bounding box
-            const totalScrollableDistance = wrapperRect.height - window.innerHeight;
-
-            // Calculate a 0.0 to 1.0 progress tracking
-            let progressFraction = totalScrollableDistance > 0 ? scrolledAmount / totalScrollableDistance : 0;
-            progressFraction = Math.min(1, Math.max(0, progressFraction));
-
-            // Max translation pixels the absolute slider needs to travel left horizontally
-            const maxHorizontalTranslation = scrollSlider.offsetWidth - window.innerWidth;
-
-            // Morph the sliding row
-            scrollSlider.style.transform = `translateX(-${progressFraction * maxHorizontalTranslation}px)`;
-        }
-
-        // Add Listeners
-        window.addEventListener('scroll', mapVerticalToHorizontal, { passive: true });
-        window.addEventListener('resize', mapVerticalToHorizontal, { passive: true });
-
-        // Init evaluation
-        mapVerticalToHorizontal();
-
-        // Touch Swipe Navigation for Horizontal Panels
-        let touchStartX = 0;
-        let touchEndX = 0;
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        scrollWrapper.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        scrollWrapper.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const diffX = touchEndX - touchStartX;
-            const diffY = touchEndY - touchStartY;
-
-            // Check if horizontal swipe is prominent enough and stronger than vertical movement
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
-                const wrapperRect = scrollWrapper.getBoundingClientRect();
-                
-                // Proceed only if we are currently inside the scroll wrapper area
-                if (wrapperRect.top > window.innerHeight || wrapperRect.bottom < 0) return;
-                
-                const scrolledAmount = Math.max(0, -wrapperRect.top);
-                const windowHeight = window.innerHeight;
-                
-                // Calculate currently active panel index (0 to 5)
-                const panelIndex = Math.round(scrolledAmount / windowHeight);
-                let targetIndex = panelIndex;
-                
-                if (diffX < 0) {
-                    // Swiped left => Go to next panel
-                    targetIndex = Math.min(5, panelIndex + 1);
-                } else if (diffX > 0) {
-                    // Swiped right => Go to previous panel
-                    targetIndex = Math.max(0, panelIndex - 1);
-                }
-                
-                if (targetIndex !== panelIndex) {
-                    // Calculate exact absolute target scroll position for the chosen panel
-                    // scrollWrapper.offsetTop ensures we account for anything above the wrapper 
-                    const targetScrollY = (scrollWrapper.offsetTop || 0) + (targetIndex * windowHeight);
-                    
-                    window.scrollTo({
-                        top: targetScrollY,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        }
     </script>
 </body>
 

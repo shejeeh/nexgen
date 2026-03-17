@@ -37,7 +37,6 @@
 
                 <li><a href="machines.html" class="nav-link">Machines</a></li>
                 <li><a href="investment.html" class="nav-link">Investment</a></li>
-                <li><a href="franchise.html" class="nav-link">Franchise</a></li>
                 <li><a href="foco.html" class="nav-link">FOCO Model</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
@@ -57,7 +56,7 @@
 
                     <div class="hero-btns" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                         <a href="investment.html" class="btn btn-primary premium-glow-btn">Become an Investor</a>
-                        <a href="franchise.html" class="btn btn-primary premium-glow-btn">Apply for Franchise</a>
+                        <a href="foco.html" class="btn btn-primary premium-glow-btn">Explore FOCO Model</a>
                     </div>
                 </div>
             </div>
@@ -311,44 +310,37 @@
         </div>
     </section>
 
-
-
-    <!-- Franchise Opportunity -->
-    <section class="franchise-section section-padding" style="background: rgba(15, 23, 42, 0.4);">
+    <!-- FOCO Overview Section -->
+    <section class="foco-overview-section section-padding" style="background: rgba(15, 23, 42, 0.4);">
         <div class="container">
-            <div class="franchise-grid">
-
-                <!-- Left: Content -->
-                <div class="franchise-content">
-                    <span class="hero-badge" style="margin-bottom: 15px;">PARTNER NETWORK</span>
-                    <h2>Own a Nexgen Vending Franchise</h2>
-                    <p class="franchise-desc">
-                        Partner with Nexgen Vendors and operate structured vending solutions with complete operational,
-                        legal, and technical support. Build your own vending network with a scalable business model.
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+                <!-- Left Column: Text Content -->
+                <div style="flex: 1 1 500px;">
+                    <span class="hero-badge" style="margin-bottom: 15px; background: transparent;">FOCO MODEL</span>
+                    <h2 style="font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; color: var(--primary-light); font-family: var(--font-heading);">
+                        Franchise Owned.<br>Company Operated.
+                    </h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                        Own the vending machine while NexGen handles the entire operation — from setup to daily management.
                     </p>
-
-                    <ul class="franchise-highlights">
-                        <li><i class="fa-solid fa-scale-balanced text-gold"></i> Legal & Compliance Support</li>
-                        <li><i class="fa-solid fa-boxes-stacked text-gold"></i> Wholesale Integration</li>
-                        <li><i class="fa-solid fa-screwdriver-wrench text-gold"></i> Maintenance & Technical Assistance
-                        </li>
-                        <li><i class="fa-solid fa-bullhorn text-gold"></i> Advertising & Revenue Opportunities</li>
+                    
+                    <ul class="premium-features" style="margin-bottom: 40px; margin-left: 0;">
+                        <li style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fa-solid fa-check text-gold"></i> You own the asset</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fa-solid fa-check text-gold"></i> We handle operations</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fa-solid fa-check text-gold"></i> Fully managed system</li>
                     </ul>
-
-                    <a href="franchise.html" class="btn btn-primary premium-glow-btn">Explore Franchise Opportunity</a>
+                    
+                    <a href="foco.html" class="btn btn-primary premium-glow-btn">Explore FOCO Model</a>
                 </div>
-
-                <!-- Right: Image -->
-                <div class="franchise-image-container">
-                    <div class="franchise-glow"></div>
-                    <!-- Using existing model image, swap as needed -->
-                    <img src="images/complete_vending_2-removebg-preview.png" alt="Nexgen Vending Franchise"
-                        class="franchise-img">
+                
+                <!-- Right Column: Image -->
+                <div style="flex: 1 1 400px; display: flex; justify-content: center;">
+                    <img src="images/ChatGPT Image Mar 16, 2026, 03_38_28 PM.png" alt="FOCO Model" style="width: 100%; max-width: 550px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); object-fit: cover;">
                 </div>
-
             </div>
         </div>
     </section>
+
     <!-- CTA Section -->
     <section class="premium-cta-section section-padding text-center">
         <div class="container">
@@ -358,13 +350,13 @@
                 Don't miss the opportunity to partner with Kerala's fastest-growing vending network.</p>
             <div class="hero-btns" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <a href="investment.html" class="btn btn-primary premium-glow-btn">Become an Investor</a>
-                <a href="franchise.html" class="btn btn-primary premium-glow-btn">Apply for Franchise</a>
+                <a href="foco.html" class="btn btn-primary premium-glow-btn">Explore FOCO Model</a>
             </div>
         </div>
     </section>
 
     <!-- Vending Machine Animation Section -->
-    <div id="animation-scroll-wrapper" style="height: 300vh; position: relative; background: rgba(15, 23, 42, 0.4); width: 100%;">
+    <div id="animation-scroll-wrapper" style="height: 400vh; position: relative; background: rgba(15, 23, 42, 0.4); width: 100%;">
         <section style="height: 100vh; position: sticky; top: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100%;">
             <canvas id="animation-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1;"></canvas>
             
@@ -474,8 +466,9 @@
             const images = new Array(TOTAL_FRAMES).fill(null);
             let loadedCount = 0;
             let currentFrame = 0;
+            let currentFrameExact = 0; // Floating point for smooth interpolation
+            let targetFrame = 0; // The actual target computed from scroll
             let rafId = null;
-            let pendingFrame = 0;
 
             // Pre-load first frame immediately so the canvas has content fast
             function loadFrame(index, cb) {
@@ -505,15 +498,23 @@
                 ctx.drawImage(img, dx, dy, iw * scale, ih * scale);
             }
 
-            // ── rAF loop: only redraws when pending != current ──
+            // ── rAF loop: smooth transitions using linear interpolation ──
             function loop() {
-                if (pendingFrame !== currentFrame) {
-                    currentFrame = pendingFrame;
+                // Smoothly ease current frame towards the target frame (0.08 determines smoothing speed)
+                currentFrameExact += (targetFrame - currentFrameExact) * 0.08;
+                
+                const roundedFrame = Math.min(TOTAL_FRAMES - 1, Math.max(0, Math.round(currentFrameExact)));
+
+                if (roundedFrame !== currentFrame) {
+                    currentFrame = roundedFrame;
                     if (images[currentFrame]) {
                         drawFrame(currentFrame);
                     } else {
                         // Frame not yet loaded – load it now and draw when ready
-                        loadFrame(currentFrame, () => drawFrame(currentFrame));
+                        loadFrame(currentFrame, () => {
+                            // Ensure we only draw if it's still the active frame in the loop
+                            if (currentFrame === roundedFrame) drawFrame(currentFrame);
+                        });
                     }
                 }
                 rafId = requestAnimationFrame(loop);
@@ -531,7 +532,8 @@
                 // Cap progress between 0 and 1
                 const progress = Math.min(1, Math.max(0, scrolled / totalScroll));
                 
-                pendingFrame = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES));
+                // Set the pure target frame float instead of snapping directly
+                targetFrame = progress * (TOTAL_FRAMES - 1);
 
                 // Step Texts Handler - Single active block logic to prevent overlap and flickering
                 const stepTexts = [
