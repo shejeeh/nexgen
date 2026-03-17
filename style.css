@@ -135,9 +135,18 @@ ul {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.logo-img {
+    height: 75px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-menu {
@@ -1322,5 +1331,64 @@ ul {
     .framework-card {
         padding: 20px;
         text-align: left;
+    }
+}
+
+/* Mobile Optimized Footer Layout */
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 0 15px; /* Reduce tall padding */
+    }
+
+    .footer-grid {
+        gap: 20px; /* Tighter layout */
+        margin-bottom: 20px;
+    }
+
+    .footer-col h4 {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
+
+    /* Clean up list items and reduce gap */
+    .footer-col ul li {
+        margin-bottom: 10px;
+        font-size: 0.85rem; /* Smaller text */
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        line-height: 1.4;
+    }
+
+    .footer-col ul li i {
+        margin-top: 4px; /* Align icon properly to text */
+        font-size: 0.95rem;
+    }
+
+    /* Target the Contact Us Column list */
+    .footer-col:nth-child(3) ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .footer-col:nth-child(3) ul li {
+        width: 100%; /* Default items stay full row */
+    }
+
+    /* Target Instagram and Facebook to sit inline */
+    .footer-col:nth-child(3) ul li:nth-last-child(2),
+    .footer-col:nth-child(3) ul li:nth-last-child(1) {
+        width: auto;
+        margin-top: 10px !important; /* Override inline style */
+        margin-bottom: 0;
+        margin-right: 25px; /* Side by side gap */
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .footer-col:nth-child(3) ul li:nth-last-child(2) i,
+    .footer-col:nth-child(3) ul li:nth-last-child(1) i {
+        margin-top: 0; /* Center icons for inline */
     }
 }
